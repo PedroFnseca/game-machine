@@ -1,17 +1,26 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
+#include <allegro5/allegro_image.h>
 #include <stdio.h>
+
+#include "constants/screen.h"
 
 int main() {
   al_init();
   al_install_keyboard();
+  al_init_image_addon();
 
   ALLEGRO_TIMER* timer = al_create_timer(1.0 / 30.0);
   ALLEGRO_EVENT_QUEUE* queue = al_create_event_queue();
-  ALLEGRO_DISPLAY* disp = al_create_display(320, 200);
+  ALLEGRO_DISPLAY* disp = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
   ALLEGRO_FONT* font = al_create_builtin_font();
 
-  al_set_display_flag(disp, ALLEGRO_FULLSCREEN_WINDOW, true);
+  ALLEGRO_BITMAP *background = al_load_bitmap("assets/background.png");
+
+  if (!background) {
+    fprintf(stderr, "Failed to load image.\n");
+    return 1;
+  }
 
   al_register_event_source(queue, al_get_keyboard_event_source());
   al_register_event_source(queue, al_get_display_event_source(disp));
@@ -31,12 +40,14 @@ int main() {
 
     if(redraw && al_is_event_queue_empty(queue)) {
       al_clear_to_color(al_map_rgb(100, 0, 0));
+      // al_draw_bitmap(background, 0, 0, 0);
       al_flip_display();
 
       redraw = false;
     }
   }
 
+  // al_destroy_bitmap(background);
   al_destroy_font(font);
   al_destroy_display(disp);
   al_destroy_timer(timer);

@@ -11,3 +11,6 @@ sudo apt-get install -y liballegro*5.2 liballegro*5-dev
 
 # Install allegro ttf
 sudo apt-get install -y liballegro-ttf5-dev
+
+# Install allegro image
+sudo apt-get install -y liballegro-image5-dev
