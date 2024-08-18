@@ -1,24 +1,36 @@
+#include <stdio.h>
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
-#include <stdio.h>
-
-#include "constants"
-#include "structs.c"
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_ttf.h>
+#include "helper.h"
+#include "draw.c"
 
 struct AllegroGame *game;
 
-void setupAllegro() {
+void setupAllegro(void) {
   al_init();
   al_install_keyboard();
   al_init_image_addon();
+  al_init_primitives_addon();
+  al_init_font_addon();
+  al_init_ttf_addon();
 
   game = malloc(sizeof(struct AllegroGame));
+
+  game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
+  game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
+  game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
 
   game->timer = al_create_timer(1.0 / 30.0);
   game->queue = al_create_event_queue();
   game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
-  game->font = al_create_builtin_font();
+
+  if (!game->timer || !game->queue || !game->display) {
+    fprintf(stderr, "Falha to load Allegro.\n");
+    exit(1);
+  }
 
   al_register_event_source(game->queue, al_get_keyboard_event_source());
   al_register_event_source(game->queue, al_get_display_event_source(game->display));
@@ -29,6 +41,9 @@ void setupAllegro() {
 
 void destroyAllegro() {
   al_destroy_font(game->font);
+  al_destroy_font(game->font_small);
+  al_destroy_font(game->font_big);
+  
   al_destroy_display(game->display);
   al_destroy_timer(game->timer);
   al_destroy_event_queue(game->queue);
@@ -37,13 +52,6 @@ void destroyAllegro() {
 
 int main() {
   setupAllegro();
-
-  ALLEGRO_BITMAP *background = al_load_bitmap("assets/background.jpeg");
-
-  if (!background) {
-    fprintf(stderr, "Failed to load image.\n");
-    return 1;
-  }
 
   bool redraw = true;
   ALLEGRO_EVENT event;
@@ -58,15 +66,18 @@ int main() {
       break;
 
     if(redraw && al_is_event_queue_empty(game->queue)) {
-      al_clear_to_color(al_map_rgb(100, 0, 0));
-      al_draw_bitmap(background, 0, 0, 0);
+      al_clear_to_color(AL_COLOR_BLACK);
+
+      al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_WHITE);
+
+      drawMenu(game, 0);
+
       al_flip_display();
 
       redraw = false;
     }
   }
 
-  al_destroy_bitmap(background);
   destroyAllegro();
 
   return 0;
