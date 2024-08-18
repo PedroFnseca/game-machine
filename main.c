@@ -15,7 +15,7 @@ int main() {
   ALLEGRO_DISPLAY* disp = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
   ALLEGRO_FONT* font = al_create_builtin_font();
 
-  ALLEGRO_BITMAP *background = al_load_bitmap("assets/background.png");
+  ALLEGRO_BITMAP *background = al_load_bitmap("assets/background.jpeg");
 
   if (!background) {
     fprintf(stderr, "Failed to load image.\n");
@@ -40,7 +40,7 @@ int main() {
 
     if(redraw && al_is_event_queue_empty(queue)) {
       al_clear_to_color(al_map_rgb(100, 0, 0));
-      // al_draw_bitmap(background, 0, 0, 0);
+      al_draw_bitmap(background, 0, 0, 0);
       al_flip_display();
 
       redraw = false;
