@@ -3,7 +3,7 @@
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
 
-#include "screen.h"
+#include "constants"
 #include "structs.c"
 
 struct AllegroGame *game;
