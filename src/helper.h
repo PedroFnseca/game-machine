@@ -23,6 +23,12 @@ struct AllegroGame {
 
 enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
 
+typedef enum {
+  MENU = 0,
+  GAME = 1,
+  CONFIG = 2
+} GameState;
+
 bool is_mouse_over_text(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
   int text_width = al_get_text_width(font, text);
   int text_height = al_get_font_line_height(font);

@@ -1,4 +1,4 @@
-int drawMenu (struct AllegroGame *game, int selected_option, ALLEGRO_MOUSE_STATE *mouse_state) {
+bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameState *gameState) {
   al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_BLACK);
 
   const char *title = "Caça-Níquel";
@@ -27,9 +27,11 @@ int drawMenu (struct AllegroGame *game, int selected_option, ALLEGRO_MOUSE_STATE
       switch (i) {
         case START_GAME:
           printf("Iniciar Jogo\n");
+          *gameState = GAME;
           break;
         case SETTINGS:
           printf("Configurações\n");
+          *gameState = CONFIG;
           break;
         case EXIT:
           return false;
@@ -38,5 +40,13 @@ int drawMenu (struct AllegroGame *game, int selected_option, ALLEGRO_MOUSE_STATE
     }
   }
 
+  return true;
+}
+
+bool drawConfig (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state) {
+  return true;
+}
+
+bool drawGame (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state) {
   return true;
 }

@@ -4,10 +4,13 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_ttf.h>
+
 #include "helper.h"
 #include "draw.c"
+#include "handle.c"
 
 struct AllegroGame *game;
+GameState gameState = MENU;
 
 void setupAllegro(void) {
   al_init();
@@ -58,29 +61,16 @@ int main() {
   ALLEGRO_EVENT event;
 
   al_start_timer(game->timer);
-  while(1) {
+  bool done = false;
+
+  while(!done) {
     al_wait_for_event(game->queue, &event);
 
     ALLEGRO_MOUSE_STATE mouse_state;
     al_get_mouse_state(&mouse_state);
 
-    if (event.type == ALLEGRO_EVENT_TIMER)
-      redraw = true;
-    else if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
-      break;
-
-    if(redraw && al_is_event_queue_empty(game->queue)) {
-      al_clear_to_color(AL_COLOR_BLACK);
-
-      al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_WHITE);
-
-      if (!drawMenu(game, 0, &mouse_state)) {
-        break;
-      }
-
-      al_flip_display();
-
-      redraw = false;
+    if (!handleScrens(game, &mouse_state, &gameState, event)) {
+      done = true;
     }
   }
 
