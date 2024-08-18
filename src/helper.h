@@ -22,3 +22,15 @@ struct AllegroGame {
 };
 
 enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
+
+bool is_mouse_over_text(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
+  int text_width = al_get_text_width(font, text);
+  int text_height = al_get_font_line_height(font);
+
+  int text_left = text_x - text_width / 2;
+  int text_right = text_x + text_width / 2;
+  int text_top = text_y;
+  int text_bottom = text_y + text_height;
+
+  return (mouse_x >= text_left && mouse_x <= text_right && mouse_y >= text_top && mouse_y <= text_bottom);
+}

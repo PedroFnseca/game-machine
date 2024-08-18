@@ -16,6 +16,7 @@ void setupAllegro(void) {
   al_init_primitives_addon();
   al_init_font_addon();
   al_init_ttf_addon();
+  al_install_mouse();
 
   game = malloc(sizeof(struct AllegroGame));
 
@@ -60,6 +61,9 @@ int main() {
   while(1) {
     al_wait_for_event(game->queue, &event);
 
+    ALLEGRO_MOUSE_STATE mouse_state;
+    al_get_mouse_state(&mouse_state);
+
     if (event.type == ALLEGRO_EVENT_TIMER)
       redraw = true;
     else if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
@@ -70,7 +74,7 @@ int main() {
 
       al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_WHITE);
 
-      drawMenu(game, 0);
+      drawMenu(game, 0, &mouse_state);
 
       al_flip_display();
 
