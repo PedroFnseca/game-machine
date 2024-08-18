@@ -1,4 +1,4 @@
-void drawMenu (struct AllegroGame *game, int selected_option, ALLEGRO_MOUSE_STATE *mouse_state) {
+int drawMenu (struct AllegroGame *game, int selected_option, ALLEGRO_MOUSE_STATE *mouse_state) {
   al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_BLACK);
 
   const char *title = "Caça-Níquel";
@@ -22,5 +22,21 @@ void drawMenu (struct AllegroGame *game, int selected_option, ALLEGRO_MOUSE_STAT
     ALLEGRO_COLOR color = mouseIsHover ? AL_COLOR_YELLOW : AL_COLOR_WHITE;
 
     al_draw_text(game->font_big, color, option_x, option_y, ALLEGRO_ALIGN_CENTER, menu_options[i]);
+
+    if (mouseIsHover && mouse_state->buttons & 1) {
+      switch (i) {
+        case START_GAME:
+          printf("Iniciar Jogo\n");
+          break;
+        case SETTINGS:
+          printf("Configurações\n");
+          break;
+        case EXIT:
+          return false;
+          break;
+      }
+    }
   }
+
+  return true;
 }

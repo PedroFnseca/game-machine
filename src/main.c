@@ -74,7 +74,9 @@ int main() {
 
       al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_WHITE);
 
-      drawMenu(game, 0, &mouse_state);
+      if (!drawMenu(game, 0, &mouse_state)) {
+        break;
+      }
 
       al_flip_display();
 
