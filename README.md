@@ -1,4 +1,4 @@
-# Jackpot Game in C with Allegro
+# Jackpot Game in C with [Allegro](https://liballeg.org/a5docs/5.2.9/)
 > This is a simple game that I made in C using the Allegro library. The game is a slot machine game where you can bet money and try to win the jackpot. The game has a simple graphical interface and uses sound effects to make it more fun.
 
 ## How to run 
