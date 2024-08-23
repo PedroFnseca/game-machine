@@ -4,6 +4,8 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 
 #include "helper.h"
 #include "draw.c"
@@ -20,6 +22,8 @@ void setupAllegro(void) {
   al_init_font_addon();
   al_init_ttf_addon();
   al_install_mouse();
+  al_install_audio();
+  al_init_acodec_addon();
 
   game = malloc(sizeof(struct AllegroGame));
 
@@ -51,6 +55,15 @@ void destroyAllegro() {
   al_destroy_display(game->display);
   al_destroy_timer(game->timer);
   al_destroy_event_queue(game->queue);
+
+  al_uninstall_audio();
+  al_uninstall_keyboard();
+  al_uninstall_mouse();
+  al_shutdown_ttf_addon();
+  al_shutdown_font_addon();
+  al_shutdown_primitives_addon();
+  al_shutdown_image_addon();
+
   free(game);
 }
 

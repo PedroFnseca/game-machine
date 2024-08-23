@@ -19,25 +19,31 @@ bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameS
 
     bool mouseIsHover = is_mouse_over_text(mouse_state->x, mouse_state->y, option_x, option_y, menu_options[i], game->font_big);
 
-    ALLEGRO_COLOR color = mouseIsHover ? AL_COLOR_YELLOW : AL_COLOR_WHITE;
+    ALLEGRO_COLOR color = AL_COLOR_WHITE;
 
-    al_draw_text(game->font_big, color, option_x, option_y, ALLEGRO_ALIGN_CENTER, menu_options[i]);
+    if (mouseIsHover) {
+      color = AL_COLOR_YELLOW;
 
-    if (mouseIsHover && mouse_state->buttons & 1) {
-      switch (i) {
-        case START_GAME:
-          printf("Iniciar Jogo\n");
-          *gameState = GAME;
-          break;
-        case SETTINGS:
-          printf("Configurações\n");
-          *gameState = CONFIG;
-          break;
-        case EXIT:
-          return false;
-          break;
+      if (mouse_state->buttons & 1) {
+        play_sound("assets/audio/menu-hover.wav");
+
+        switch (i) {
+          case START_GAME:
+            printf("Iniciar Jogo\n");
+            *gameState = GAME;
+            break;
+          case SETTINGS:
+            printf("Configurações\n");
+            *gameState = CONFIG;
+            break;
+          case EXIT:
+            return false;
+            break;
+        }
       }
     }
+
+    al_draw_text(game->font_big, color, option_x, option_y, ALLEGRO_ALIGN_CENTER, menu_options[i]);
   }
 
   return true;

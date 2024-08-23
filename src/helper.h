@@ -40,3 +40,18 @@ bool is_mouse_over_text(int mouse_x, int mouse_y, int text_x, int text_y, const 
 
   return (mouse_x >= text_left && mouse_x <= text_right && mouse_y >= text_top && mouse_y <= text_bottom);
 }
+
+void play_sound(const char *filename) {
+  ALLEGRO_SAMPLE *sample = al_load_sample(filename);
+
+  if (!sample) {
+    fprintf(stderr, "Failed to load sound: %s\n", filename);
+    return;
+  }
+
+  if (!al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL)) {
+    fprintf(stderr, "Failed to play sound: %s\n", filename);
+  }
+  
+  al_destroy_sample(sample);
+}

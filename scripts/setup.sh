@@ -14,3 +14,9 @@ sudo apt-get install -y liballegro-ttf5-dev
 
 # Install allegro image
 sudo apt-get install -y liballegro-image5-dev
+
+# Install allegro audio
+sudo apt-get install -y liballegro-audio5-dev
+
+# Install allegro acodec
+sudo apt-get install -y liballegro-acodec5-dev
