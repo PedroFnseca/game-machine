@@ -1,7 +1,7 @@
 #define WIDTH_SCREEN 1024
 #define HEIGHT_SCREEN 900
 
-#define FONT_PATH "assets/Roboto-Regular.ttf"
+#define FONT_PATH "assets/fonts/Roboto-Regular.ttf"
 #define FONT_SIZE 18
 #define FONT_SIZE_SMALL 14
 #define FONT_SIZE_BIG 24
