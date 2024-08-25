@@ -25,6 +25,8 @@ void setupAllegro(void) {
   al_install_audio();
   al_init_acodec_addon();
 
+  al_reserve_samples(10);
+
   game = malloc(sizeof(struct AllegroGame));
 
   game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
