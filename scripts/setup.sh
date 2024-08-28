@@ -20,3 +20,6 @@ sudo apt-get install -y liballegro-audio5-dev
 
 # Install allegro acodec
 sudo apt-get install -y liballegro-acodec5-dev
+
+# Upgrade & update
+sudo apt-get update & sudo apt-get upgrade
