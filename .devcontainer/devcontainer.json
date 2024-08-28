@@ -1,0 +1,5 @@
+{
+  "name": "codespace",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+  "postCreateCommand": "bash ./scripts/setup.sh"
+}
