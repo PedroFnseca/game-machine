@@ -7,7 +7,7 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 
-#include "helper.h"
+#include "helper.c"
 #include "draw.c"
 #include "handle.c"
 
