@@ -1,11 +1,11 @@
 # Jackpot Game in C with [Allegro](https://liballeg.org/a5docs/5.2.9/)
-> This is a simple game that I made in C using the Allegro library. The game is a slot machine game where you can bet money and try to win the jackpot. The game has a simple graphical interface and uses sound effects to make it more fun.
+### This is a simple game that I made in C using the Allegro library. The game is a slot machine game where you can bet money and try to win the jackpot. The game has a simple graphical interface and uses sound effects to make it more fun.
 
-## How to run 
-This reposity contains a script that will compile the game and run it. To run the game, you need to have the Allegro library installed on your computer. You can install it by running the following command:
+## How to run 🚀
+This reposity contains a script that will compile the game and run it. Chose the appropriate section for your operating system.
 
 <details>
-  <summary>Linux</summary>
+  <summary><strong>Linux 🐧</strong></summary>
 
   1. Clone the repository
   ```bash
@@ -29,9 +29,26 @@ This reposity contains a script that will compile the game and run it. To run th
 </details>
 
 <details>
-  <summary>Windows</summary>
+  <summary><strong>Windows 🪟</strong></summary>
 
-  Under construction
+  1. Install packages [Allegro](https://github.com/liballeg/allegro5/releases) and [MinGW](https://sourceforge.net/projects/mingw/)
+  > note: make sure to add the MinGW & Allegro bin folder to the PATH environment variable (ex. C:\MinGW\bin and C:\allegro\bin)
+
+  2. Clone the repository
+  ```bash
+  git clone https://github.com/PedroFnseca/jackpot-C.git
+  ```
+
+  3. Navigate to the project folder
+  ```bash
+  cd jackpot-C
+  ```
+
+  4. Run the batch file or click on it
+  ```bash
+  ./scripts/run.bat
+  ```
+  
 </details>
 
 ## How to play
