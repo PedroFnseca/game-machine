@@ -1,5 +1,5 @@
-#include "headers/draw.h"
 #include <allegro5/allegro_primitives.h>
+#include "../headers/screens.h"
 #include <stdio.h>
 
 bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameState *gameState) {
@@ -50,13 +50,5 @@ bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameS
     al_draw_text(game->font_big, color, option_x, option_y, ALLEGRO_ALIGN_CENTER, menu_options[i]);
   }
 
-  return true;
-}
-
-bool drawConfig (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state) {
-  return true;
-}
-
-bool drawGame (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state) {
   return true;
 }
