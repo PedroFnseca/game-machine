@@ -1,33 +1,27 @@
-#define WIDTH_SCREEN 1024
-#define HEIGHT_SCREEN 900
+#include "headers/helper.h"
+#include <stdio.h>
 
-#define FONT_PATH "assets/fonts/Roboto-Regular.ttf"
-#define FONT_SIZE 18
-#define FONT_SIZE_SMALL 14
-#define FONT_SIZE_BIG 24
+ALLEGRO_COLOR AL_COLOR_BLACK;
+ALLEGRO_COLOR AL_COLOR_WHITE;
+ALLEGRO_COLOR AL_COLOR_BLUE;
+ALLEGRO_COLOR AL_COLOR_YELLOW;
+ALLEGRO_COLOR AL_COLOR_RED;
 
-#define AL_COLOR_BLACK al_map_rgb(0, 0, 0)
-#define AL_COLOR_WHITE al_map_rgb(255, 255, 255)
-#define AL_COLOR_BLUE al_map_rgb(0, 0, 128)
-#define AL_COLOR_YELLOW al_map_rgb(255, 255, 0)
-#define AL_COLOR_RED al_map_rgb(128, 0, 0)
+const int WIDTH_SCREEN = 1024;
+const int HEIGHT_SCREEN = 900;
 
-struct AllegroGame {
-  ALLEGRO_TIMER *timer;
-  ALLEGRO_EVENT_QUEUE *queue;
-  ALLEGRO_DISPLAY *display;
-  ALLEGRO_FONT *font;
-  ALLEGRO_FONT *font_small;
-  ALLEGRO_FONT *font_big;
-};
+const char* FONT_PATH = "assets/fonts/Roboto-Regular.ttf";
+const int FONT_SIZE = 18;
+const int FONT_SIZE_SMALL = 14;
+const int FONT_SIZE_BIG = 24;
 
-enum MENU_OPTIONS { START_GAME, SETTINGS, EXIT, NUM_OPTIONS };
-
-typedef enum {
-  MENU = 0,
-  GAME = 1,
-  CONFIG = 2
-} GameState;
+void initialize_colors() {
+  AL_COLOR_BLACK = al_map_rgb(0, 0, 0);
+  AL_COLOR_WHITE = al_map_rgb(255, 255, 255);
+  AL_COLOR_BLUE = al_map_rgb(0, 0, 128);
+  AL_COLOR_YELLOW = al_map_rgb(255, 255, 0);
+  AL_COLOR_RED = al_map_rgb(128, 0, 0);
+}
 
 bool is_mouse_over_text(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
   int text_width = al_get_text_width(font, text);
