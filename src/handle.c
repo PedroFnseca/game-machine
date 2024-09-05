@@ -1,4 +1,6 @@
 #include "headers/handle.h"
+#include "headers/draw.h"
+#include "headers/helper.h"
 
 bool handleScrens (
   struct AllegroGame *game,
