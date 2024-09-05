@@ -12,7 +12,8 @@ if (%cd:~-7%) == (scripts) (
 set SRC_DIR=src
 set BIN_DIR=bin
 
-set SRCS=%SRC_DIR%\main.c
+:: Arquivos fonte
+set SRCS=%SRC_DIR%\main.c %SRC_DIR%\helper.c %SRC_DIR%\draw.c %SRC_DIR%\handle.c
 
 :: Nome do executável
 set TARGET=%BIN_DIR%\game.exe
