@@ -7,9 +7,9 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 
-#include "helper.c"
-#include "draw.c"
-#include "handle.c"
+#include "headers/helper.h"
+#include "headers/draw.h"
+#include "headers/handle.h"
 
 struct AllegroGame *game;
 GameState gameState = MENU;
@@ -25,7 +25,9 @@ void setupAllegro(void) {
   al_install_audio();
   al_init_acodec_addon();
 
-  al_reserve_samples(10);
+  initialize_colors();
+
+  al_reserve_samples(0);
 
   game = malloc(sizeof(struct AllegroGame));
 
