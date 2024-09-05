@@ -1,3 +1,7 @@
+#include "headers/draw.h"
+#include <allegro5/allegro_primitives.h>
+#include <stdio.h>
+
 bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameState *gameState) {
   al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_BLACK);
 
