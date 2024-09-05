@@ -8,7 +8,6 @@
 #include <allegro5/allegro_acodec.h>
 
 #include "headers/helper.h"
-#include "headers/draw.h"
 #include "headers/handle.h"
 
 struct AllegroGame *game;
