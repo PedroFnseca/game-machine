@@ -44,7 +44,7 @@ void setupAllegro(void) {
 
   al_register_event_source(game->queue, al_get_keyboard_event_source());
   al_register_event_source(game->queue, al_get_display_event_source(game->display));
-  al_set_window_title(game->display, "Jackpot Game");
+  al_set_window_title(game->display, "Came-Machine");
   al_set_display_icon(game->display, al_load_bitmap("assets/images/icon.png"));
   al_register_event_source(game->queue, al_get_timer_event_source(game->timer));
 }

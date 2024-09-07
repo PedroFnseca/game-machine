@@ -6,7 +6,7 @@
 bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameState *gameState) {
   al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_BLACK);
 
-  const char *title = "Caça-Níquel";
+  const char *title = "Game-Machine";
   int title_x = WIDTH_SCREEN / 2;
   int title_y = HEIGHT_SCREEN / 6;
 
