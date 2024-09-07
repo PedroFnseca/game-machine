@@ -13,7 +13,7 @@ set SRC_DIR=src
 set BIN_DIR=bin
 
 :: Arquivos fonte
-set SRCS=%SRC_DIR%\main.c %SRC_DIR%\helper.c %SRC_DIR%\screens.c %SRC_DIR%\handle.c
+set SRCS=%SRC_DIR%\main.c %SRC_DIR%\helper.c %SRC_DIR%\screens.c %SRC_DIR%\handle.c %SRC_DIR%\sound.c
 
 :: Nome do executável
 set TARGET=%BIN_DIR%\game.exe

@@ -3,8 +3,6 @@
 
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
-#include <allegro5/allegro_audio.h>
-#include <allegro5/allegro_acodec.h>
 
 extern const int WIDTH_SCREEN;
 extern const int HEIGHT_SCREEN;
@@ -38,8 +36,6 @@ typedef enum {
 } GameState;
 
 bool is_mouse_over_text(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
-
-void play_sound(const char *filename);
 
 void initialize_colors(void);
 

@@ -1,5 +1,6 @@
 #include <allegro5/allegro_primitives.h>
 #include "../headers/screens.h"
+#include "../headers/sound.h"
 #include <stdio.h>
 
 bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameState *gameState) {
@@ -29,7 +30,7 @@ bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameS
       color = AL_COLOR_YELLOW;
 
       if (mouse_state->buttons & 1) {
-        play_sound("assets/audio/menu-hover.wav");
+        play_sound(0);
 
         switch (i) {
           case START_GAME:

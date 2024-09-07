@@ -5,7 +5,7 @@ SRC_DIR="src"
 BIN_DIR="bin"
 
 # Arquivos fonte
-SRCS="$SRC_DIR/main.c $SRC_DIR/helper.c $SRC_DIR/screens.c $SRC_DIR/handle.c"
+SRCS="$SRC_DIR/main.c $SRC_DIR/helper.c $SRC_DIR/screens.c $SRC_DIR/handle.c $SRC_DIR/sound.c"
 
 # Nome do executável
 TARGET="$BIN_DIR/out"

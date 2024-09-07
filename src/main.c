@@ -9,6 +9,7 @@
 
 #include "headers/helper.h"
 #include "headers/handle.h"
+#include "headers/sound.h"
 
 struct AllegroGame *game;
 GameState gameState = MENU;
@@ -25,8 +26,6 @@ void setupAllegro(void) {
   al_init_acodec_addon();
 
   initialize_colors();
-
-  al_reserve_samples(0);
 
   game = malloc(sizeof(struct AllegroGame));
 
@@ -72,6 +71,7 @@ void destroyAllegro() {
 
 int main() {
   setupAllegro();
+  setupSamples();
 
   bool redraw = true;
   ALLEGRO_EVENT event;
