@@ -37,4 +37,4 @@ if %errorlevel% neq 0 (
 :: Executar o programa
 %TARGET%
 
-endlocalwha
+endlocal
