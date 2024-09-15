@@ -11,10 +11,7 @@
 #include "headers/handle.h"
 #include "headers/sound.h"
 
-struct AllegroGame *game;
-GameState gameState = MENU;
-
-void setupAllegro(void) {
+void setupAllegro(struct AllegroGame *game) {
   al_init();
   al_install_keyboard();
   al_init_image_addon();
@@ -27,15 +24,7 @@ void setupAllegro(void) {
 
   initializeColors();
 
-  game = malloc(sizeof(struct AllegroGame));
-
-  game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
-  game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
-  game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
-
-  game->timer = al_create_timer(1.0 / 30.0);
-  game->queue = al_create_event_queue();
-  game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
+  initializeAllegro(game);
 
   if (!game->timer || !game->queue || !game->display) {
     fprintf(stderr, "Falha to load Allegro.\n");
@@ -49,7 +38,7 @@ void setupAllegro(void) {
   al_register_event_source(game->queue, al_get_timer_event_source(game->timer));
 }
 
-void destroyAllegro() {
+void destroyAllegro(struct AllegroGame *game) {
   al_destroy_font(game->font);
   al_destroy_font(game->font_small);
   al_destroy_font(game->font_big);
@@ -70,7 +59,10 @@ void destroyAllegro() {
 }
 
 int main() {
-  setupAllegro();
+  struct AllegroGame *game = (struct AllegroGame *) malloc(sizeof(struct AllegroGame));
+  GameState gameState = MENU;
+
+  setupAllegro(game);
   setupSamples();
 
   bool redraw = true;
@@ -90,7 +82,7 @@ int main() {
     }
   }
 
-  destroyAllegro();
+  destroyAllegro(game);
 
   return 0;
 }

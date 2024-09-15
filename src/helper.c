@@ -1,5 +1,6 @@
 #include "headers/helper.h"
 #include <stdio.h>
+#include <allegro5/allegro5.h>
 
 ALLEGRO_COLOR AL_COLOR_BLACK;
 ALLEGRO_COLOR AL_COLOR_WHITE;
@@ -21,6 +22,21 @@ void initializeColors() {
   AL_COLOR_BLUE = al_map_rgb(0, 0, 128);
   AL_COLOR_YELLOW = al_map_rgb(255, 255, 0);
   AL_COLOR_RED = al_map_rgb(128, 0, 0);
+}
+
+void initializeAllegro(struct AllegroGame *game) {
+  game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
+  game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
+  game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
+
+  game->timer = al_create_timer(1.0 / 30.0);
+  game->queue = al_create_event_queue();
+  game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
+
+  if (!game->timer || !game->queue || !game->display) {
+    fprintf(stderr, "Falha to load Allegro.\n");
+    exit(1);
+  }
 }
 
 bool isMouseOverText(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {

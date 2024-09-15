@@ -41,4 +41,6 @@ bool isMouseOverBox(int mouse_x, int mouse_y, int box_x, int box_y, int box_widt
 
 void initializeColors(void);
 
+void initializeAllegro(struct AllegroGame *game);
+
 #endif
