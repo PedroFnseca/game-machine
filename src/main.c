@@ -11,6 +11,23 @@
 #include "headers/handle.h"
 #include "headers/sound.h"
 
+void initializeAllegro(struct AllegroGame *game) {
+  game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
+  game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
+  game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
+
+  game->timer = al_create_timer(1.0 / 30.0);
+  game->queue = al_create_event_queue();
+  game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
+
+  game->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
+
+  if (!game->timer || !game->queue || !game->display) {
+    fprintf(stderr, "Falha to load Allegro.\n");
+    exit(1);
+  }
+}
+
 void setupAllegro(struct AllegroGame *game) {
   al_init();
   al_install_keyboard();
@@ -21,8 +38,6 @@ void setupAllegro(struct AllegroGame *game) {
   al_install_mouse();
   al_install_audio();
   al_init_acodec_addon();
-
-  initializeColors();
 
   initializeAllegro(game);
 
@@ -55,6 +70,7 @@ void destroyAllegro(struct AllegroGame *game) {
   al_shutdown_primitives_addon();
   al_shutdown_image_addon();
 
+  free(game->mouse_state);
   free(game);
 }
 
@@ -74,10 +90,9 @@ int main() {
   while(!done) {
     al_wait_for_event(game->queue, &event);
 
-    ALLEGRO_MOUSE_STATE mouse_state;
-    al_get_mouse_state(&mouse_state);
+    al_get_mouse_state(game->mouse_state);
 
-    if (!handleScrens(game, &mouse_state, &gameState, event)) {
+    if (!handleScrens(game, &gameState, event)) {
       done = true;
     }
   }

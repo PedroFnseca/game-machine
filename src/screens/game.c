@@ -2,6 +2,6 @@
 #include "../headers/screens.h"
 #include <stdio.h>
 
-bool drawGame (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state) {
+bool drawGame (struct AllegroGame *game) {
   return true;
 }

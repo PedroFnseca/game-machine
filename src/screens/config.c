@@ -1,7 +1,9 @@
 #include <allegro5/allegro_primitives.h>
-#include "../headers/screens.h"
 #include <stdio.h>
+#include "../headers/screens.h"
+#include "../headers/components.h"
 
-bool drawConfig (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state) {
+bool drawConfig (struct AllegroGame *game) {
+
   return true;
 }

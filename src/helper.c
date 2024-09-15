@@ -2,12 +2,6 @@
 #include <stdio.h>
 #include <allegro5/allegro5.h>
 
-ALLEGRO_COLOR AL_COLOR_BLACK;
-ALLEGRO_COLOR AL_COLOR_WHITE;
-ALLEGRO_COLOR AL_COLOR_BLUE;
-ALLEGRO_COLOR AL_COLOR_YELLOW;
-ALLEGRO_COLOR AL_COLOR_RED;
-
 const int WIDTH_SCREEN = 1024;
 const int HEIGHT_SCREEN = 900;
 
@@ -15,29 +9,6 @@ const char* FONT_PATH = "assets/fonts/Roboto-Regular.ttf";
 const int FONT_SIZE = 18;
 const int FONT_SIZE_SMALL = 14;
 const int FONT_SIZE_BIG = 24;
-
-void initializeColors() {
-  AL_COLOR_BLACK = al_map_rgb(0, 0, 0);
-  AL_COLOR_WHITE = al_map_rgb(255, 255, 255);
-  AL_COLOR_BLUE = al_map_rgb(0, 0, 128);
-  AL_COLOR_YELLOW = al_map_rgb(255, 255, 0);
-  AL_COLOR_RED = al_map_rgb(128, 0, 0);
-}
-
-void initializeAllegro(struct AllegroGame *game) {
-  game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
-  game->font_small = al_load_font(FONT_PATH, FONT_SIZE_SMALL, 0);
-  game->font_big = al_load_font(FONT_PATH, FONT_SIZE_BIG, 0);
-
-  game->timer = al_create_timer(1.0 / 30.0);
-  game->queue = al_create_event_queue();
-  game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
-
-  if (!game->timer || !game->queue || !game->display) {
-    fprintf(stderr, "Falha to load Allegro.\n");
-    exit(1);
-  }
-}
 
 bool isMouseOverText(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
   int text_width = al_get_text_width(font, text);

@@ -4,7 +4,6 @@
 
 bool handleScrens (
   struct AllegroGame *game,
-  ALLEGRO_MOUSE_STATE *mouse_state,
   GameState *gameState,
   ALLEGRO_EVENT event
 ) {
@@ -28,13 +27,13 @@ bool handleScrens (
 
     switch (*gameState) {
       case MENU:
-        if (!drawHome(game, mouse_state, gameState)) return false;
+        if (!drawHome(game, gameState)) return false;
         break;
       case CONFIG:
-        if (!drawConfig(game, mouse_state)) *gameState = MENU;
+        if (!drawConfig(game)) *gameState = MENU;
         break;
       case GAME:
-        if (!drawGame(game, mouse_state)) *gameState = MENU;
+        if (!drawGame(game)) *gameState = MENU;
         break;
       default:
         break;

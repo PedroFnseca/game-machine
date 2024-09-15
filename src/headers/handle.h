@@ -6,7 +6,6 @@
 
 bool handleScrens (
   struct AllegroGame *game,
-  ALLEGRO_MOUSE_STATE *mouse_state,
   GameState *gameState,
   ALLEGRO_EVENT event
 );

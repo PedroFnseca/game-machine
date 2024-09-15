@@ -3,7 +3,7 @@
 #include "../headers/sound.h"
 #include <stdio.h>
 
-bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameState *gameState) {
+bool drawHome (struct AllegroGame *game, GameState *gameState) {
   al_draw_filled_rectangle(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, AL_COLOR_BLACK);
 
   const char *title = "Game-Machine";
@@ -22,14 +22,14 @@ bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameS
     int option_x = WIDTH_SCREEN / 2;
     int option_y = (HEIGHT_SCREEN / 2) + i * 60;
 
-    bool mouseIsHover = isMouseOverText(mouse_state->x, mouse_state->y, option_x, option_y, menu_options[i], game->font_big);
+    bool mouseIsHover = isMouseOverText(game->mouse_state->x, game->mouse_state->y, option_x, option_y, menu_options[i], game->font_big);
 
     ALLEGRO_COLOR color = AL_COLOR_WHITE;
 
     if (mouseIsHover) {
       color = AL_COLOR_YELLOW;
 
-      if (mouse_state->buttons & 1) {
+      if (game->mouse_state->buttons & 1) {
         playSound(0);
 
         switch (i) {
