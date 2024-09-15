@@ -12,9 +12,7 @@ typedef struct {
 #define MAX_SAMPLES 1
 extern Sample samples[MAX_SAMPLES];
 
-void setupSamples(void);
-
-void play_sound(int sample_index);
+void playSound(int sample_index);
 
 void setupSamples(void);
 

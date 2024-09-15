@@ -5,7 +5,7 @@
 
 Sample samples[MAX_SAMPLES];
 
-void play_sound(int sample_index) {
+void playSound(int sample_index) {
   if (sample_index < 0 || sample_index >= MAX_SAMPLES) {
     fprintf(stderr, "Invalid sample ID: %d\n", sample_index);
     return;

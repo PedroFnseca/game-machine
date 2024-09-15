@@ -35,10 +35,10 @@ typedef enum {
   CONFIG = 2
 } GameState;
 
-bool is_mouse_over_text(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
+bool isMouseOverText(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
 
-bool is_mouse_over_box(int mouse_x, int mouse_y, int box_x, int box_y, int box_width, int box_height);
+bool isMouseOverBox(int mouse_x, int mouse_y, int box_x, int box_y, int box_width, int box_height);
 
-void initialize_colors(void);
+void initializeColors(void);
 
 #endif

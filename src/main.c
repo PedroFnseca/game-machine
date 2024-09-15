@@ -25,7 +25,7 @@ void setupAllegro(void) {
   al_install_audio();
   al_init_acodec_addon();
 
-  initialize_colors();
+  initializeColors();
 
   game = malloc(sizeof(struct AllegroGame));
 

@@ -22,7 +22,7 @@ bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameS
     int option_x = WIDTH_SCREEN / 2;
     int option_y = (HEIGHT_SCREEN / 2) + i * 60;
 
-    bool mouseIsHover = is_mouse_over_text(mouse_state->x, mouse_state->y, option_x, option_y, menu_options[i], game->font_big);
+    bool mouseIsHover = isMouseOverText(mouse_state->x, mouse_state->y, option_x, option_y, menu_options[i], game->font_big);
 
     ALLEGRO_COLOR color = AL_COLOR_WHITE;
 
@@ -30,7 +30,7 @@ bool drawHome (struct AllegroGame *game, ALLEGRO_MOUSE_STATE *mouse_state, GameS
       color = AL_COLOR_YELLOW;
 
       if (mouse_state->buttons & 1) {
-        play_sound(0);
+        playSound(0);
 
         switch (i) {
           case START_GAME:
