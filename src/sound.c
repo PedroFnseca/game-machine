@@ -1,11 +1,16 @@
 #include "headers/sound.h"
+#include "headers/helper.h"
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 #include <stdio.h>
 
 Sample samples[MAX_SAMPLES];
 
-void playSound(int sample_index) {
+void playSound(struct AllegroGame *game, int sample_index) {
+  if (!game->is_sound) {
+    return;
+  }
+
   if (sample_index < 0 || sample_index >= MAX_SAMPLES) {
     fprintf(stderr, "Invalid sample ID: %d\n", sample_index);
     return;
@@ -26,11 +31,11 @@ void playSound(int sample_index) {
 }
 
 void setupSamples(void) {
-  Sample menu_hover = {
+  Sample menu_click = {
     .id = 1,
     .path = "assets/audio/menu-hover.wav",
     .name = "menu-hover"
   };
 
-  samples[0] = menu_hover;
+  samples[0] = menu_click;
 }

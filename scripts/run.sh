@@ -1,11 +1,17 @@
 #!/bin/bash
+clear
 
 # Diretórios
 SRC_DIR="src"
 BIN_DIR="bin"
 
 # Arquivos fonte
-SRCS="$SRC_DIR/main.c $SRC_DIR/helper.c $SRC_DIR/screens.c $SRC_DIR/handle.c $SRC_DIR/sound.c"
+SRCS="$SRC_DIR/main.c \
+$SRC_DIR/helper.c \
+$SRC_DIR/screens.c \
+$SRC_DIR/handle.c \
+$SRC_DIR/sound.c \
+$SRC_DIR/components.c"
 
 # Nome do executável
 TARGET="$BIN_DIR/out"

@@ -10,6 +10,8 @@
 #include "headers/helper.h"
 #include "headers/handle.h"
 #include "headers/sound.h"
+#include "headers/components.h"
+#include "headers/screens.h"
 
 void initializeAllegro(struct AllegroGame *game) {
   game->font = al_load_font(FONT_PATH, FONT_SIZE, 0);
@@ -20,7 +22,12 @@ void initializeAllegro(struct AllegroGame *game) {
   game->queue = al_create_event_queue();
   game->display = al_create_display(WIDTH_SCREEN, HEIGHT_SCREEN);
 
+
   game->mouse_state = (ALLEGRO_MOUSE_STATE *) malloc(sizeof(ALLEGRO_MOUSE_STATE));
+  game->is_mouse_pressed = false;
+  game->was_mouse_pressed = false;
+
+  game->is_sound = true;
 
   if (!game->timer || !game->queue || !game->display) {
     fprintf(stderr, "Falha to load Allegro.\n");
@@ -48,7 +55,7 @@ void setupAllegro(struct AllegroGame *game) {
 
   al_register_event_source(game->queue, al_get_keyboard_event_source());
   al_register_event_source(game->queue, al_get_display_event_source(game->display));
-  al_set_window_title(game->display, "Came-Machine");
+  al_set_window_title(game->display, "Game-Machine");
   al_set_display_icon(game->display, al_load_bitmap("assets/images/icon.png"));
   al_register_event_source(game->queue, al_get_timer_event_source(game->timer));
 }
@@ -80,19 +87,25 @@ int main() {
 
   setupAllegro(game);
   setupSamples();
+  setupButtonsConfig(game);
+  setupButtonsHome(game);
 
   bool redraw = true;
-  ALLEGRO_EVENT event;
+  bool last_mouse_pressd = false;
+  bool was_mouse_pressed = false;
 
   al_start_timer(game->timer);
   bool done = false;
 
   while(!done) {
-    al_wait_for_event(game->queue, &event);
+    al_wait_for_event(game->queue, &game->event);
+    checkMouseClick(game, &last_mouse_pressd, &was_mouse_pressed);
 
-    al_get_mouse_state(game->mouse_state);
+    if (!handleScrens(game, &gameState)) {
+      done = true;
+    }
 
-    if (!handleScrens(game, &gameState, event)) {
+    if (game->event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
       done = true;
     }
   }

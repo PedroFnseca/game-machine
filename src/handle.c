@@ -2,20 +2,16 @@
 #include "headers/screens.h"
 #include "headers/helper.h"
 
-bool handleScrens (
-  struct AllegroGame *game,
-  GameState *gameState,
-  ALLEGRO_EVENT event
-) {
+bool handleScrens (struct AllegroGame *game, GameState *gameState) {
   bool redraw = true;
 
-  if (event.type == ALLEGRO_EVENT_TIMER)
+  if (game->event.type == ALLEGRO_EVENT_TIMER)
     redraw = true;
-  else if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+  else if(game->event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
     return false;
 
-  if(event.type == ALLEGRO_EVENT_KEY_DOWN) {
-    if(event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
+  if(game->event.type == ALLEGRO_EVENT_KEY_DOWN) {
+    if(game->event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
       if (*gameState != MENU) {
         *gameState = MENU;
       }

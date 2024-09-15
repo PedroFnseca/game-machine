@@ -1,6 +1,8 @@
 @echo off
 setlocal
 
+cls
+
 set PATH=C:\MinGW\bin;%PATH%
 set PATH=C:\allegro\bin;%PATH%
 
@@ -13,7 +15,12 @@ set SRC_DIR=src
 set BIN_DIR=bin
 
 :: Arquivos fonte
-set SRCS=%SRC_DIR%\main.c %SRC_DIR%\helper.c %SRC_DIR%\screens.c %SRC_DIR%\handle.c %SRC_DIR%\sound.c
+set SRCS=%SRC_DIR%\main.c ^
+%SRC_DIR%\helper.c ^
+%SRC_DIR%\screens.c ^
+%SRC_DIR%\handle.c ^
+%SRC_DIR%\sound.c ^
+%SRC_DIR%\components.c
 
 :: Nome do executável
 set TARGET=%BIN_DIR%\game.exe
@@ -29,7 +36,7 @@ gcc %SRCS% -o %TARGET% %CFLAGS% %LDFLAGS%
 
 if %errorlevel% neq 0 (
   echo Compilation failed!
-  pause🪟
+  pause
   exit /b
 )
 

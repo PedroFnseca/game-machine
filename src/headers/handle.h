@@ -4,10 +4,6 @@
 #include <allegro5/allegro5.h>
 #include "helper.h"
 
-bool handleScrens (
-  struct AllegroGame *game,
-  GameState *gameState,
-  ALLEGRO_EVENT event
-);
+bool handleScrens (struct AllegroGame *game, GameState *gameState);
 
 #endif
