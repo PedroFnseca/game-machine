@@ -2,14 +2,6 @@
 #include <stdio.h>
 #include <allegro5/allegro5.h>
 
-const int WIDTH_SCREEN = 1024;
-const int HEIGHT_SCREEN = 900;
-
-const char* FONT_PATH = "assets/fonts/Roboto-Regular.ttf";
-const int FONT_SIZE = 18;
-const int FONT_SIZE_SMALL = 14;
-const int FONT_SIZE_BIG = 24;
-
 bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
   int text_width = al_get_text_width(font, text);
   int text_height = al_get_font_line_height(font);

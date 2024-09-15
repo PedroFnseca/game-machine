@@ -4,13 +4,13 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
 
-extern const int WIDTH_SCREEN;
-extern const int HEIGHT_SCREEN;
+#define WIDTH_SCREEN 1024
+#define HEIGHT_SCREEN 900
 
-extern const char* FONT_PATH;
-extern const int FONT_SIZE;
-extern const int FONT_SIZE_SMALL;
-extern const int FONT_SIZE_BIG;
+#define FONT_PATH "assets/fonts/Roboto-Regular.ttf"
+#define FONT_SIZE 18
+#define FONT_SIZE_SMALL 14
+#define FONT_SIZE_BIG 24
 
 #define AL_COLOR_BLACK al_map_rgb(0, 0, 0)
 #define AL_COLOR_WHITE al_map_rgb(255, 255, 255)
