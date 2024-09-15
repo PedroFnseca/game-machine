@@ -10,7 +10,7 @@ const int FONT_SIZE = 18;
 const int FONT_SIZE_SMALL = 14;
 const int FONT_SIZE_BIG = 24;
 
-bool isMouseOverText(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
+bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font) {
   int text_width = al_get_text_width(font, text);
   int text_height = al_get_font_line_height(font);
 
@@ -19,12 +19,12 @@ bool isMouseOverText(int mouse_x, int mouse_y, int text_x, int text_y, const cha
   int text_top = text_y;
   int text_bottom = text_y + text_height;
 
-  return (mouse_x >= text_left && mouse_x <= text_right && mouse_y >= text_top && mouse_y <= text_bottom);
+  return (mouse_state->x >= text_left && mouse_state->x <= text_right && mouse_state->y >= text_top && mouse_state->y <= text_bottom);
 }
 
-bool isMouseOverBox(int mouse_x, int mouse_y, int box_x, int box_y, int box_width, int box_height) {
+bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int box_width, int box_height) {
   int box_right = box_x + box_width;
   int box_bottom = box_y + box_height;
 
-  return (mouse_x >= box_x && mouse_x <= box_right && mouse_y >= box_y && mouse_y <= box_bottom);
+  return (mouse_state->x >= box_x && mouse_state->x <= box_right && mouse_state->y >= box_y && mouse_state->y <= box_bottom);
 }

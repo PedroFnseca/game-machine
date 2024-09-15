@@ -36,8 +36,8 @@ typedef enum {
   CONFIG = 2
 } GameState;
 
-bool isMouseOverText(int mouse_x, int mouse_y, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
+bool isMouseOverText(ALLEGRO_MOUSE_STATE *mouse_state, int text_x, int text_y, const char *text, ALLEGRO_FONT *font);
 
-bool isMouseOverBox(int mouse_x, int mouse_y, int box_x, int box_y, int box_width, int box_height);
+bool isMouseOverBox(ALLEGRO_MOUSE_STATE *mouse_state, int box_x, int box_y, int box_width, int box_height);
 
 #endif
