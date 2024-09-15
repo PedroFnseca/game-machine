@@ -34,3 +34,10 @@ bool is_mouse_over_text(int mouse_x, int mouse_y, int text_x, int text_y, const 
 
   return (mouse_x >= text_left && mouse_x <= text_right && mouse_y >= text_top && mouse_y <= text_bottom);
 }
+
+bool is_mouse_over_box(int mouse_x, int mouse_y, int box_x, int box_y, int box_width, int box_height) {
+  int box_right = box_x + box_width;
+  int box_bottom = box_y + box_height;
+
+  return (mouse_x >= box_x && mouse_x <= box_right && mouse_y >= box_y && mouse_y <= box_bottom);
+}
